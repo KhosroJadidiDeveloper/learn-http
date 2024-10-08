@@ -4,10 +4,10 @@ namespace client;
 
 internal class Program
 {
-    private static readonly string _baseUrl = "https://localhost:7141";
-    private static readonly HttpClient Client = new(){BaseAddress = new Uri(_baseUrl)};
+    private static readonly string BaseUrl = "https://localhost:7141";
+    private static readonly HttpClient Client = new(){BaseAddress = new Uri(BaseUrl)};
 
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var getExercises = new GetExercises(Client);
         var postExercises = new PostExercises(Client);
@@ -25,7 +25,16 @@ internal class Program
                 switch (input.ToUpper())
                 {
                     case "GET":
-                        getExercises.SimpleGet();
+                        await getExercises.Get(string.Empty);
+                        break;
+                    case "GET-S":
+                        await getExercises.Get("/success");
+                        break;
+                    case "GET-S-P":
+                        await getExercises.Get("success/khosro?age=30");
+                        break;
+                    case "GET-F":
+                        await getExercises.Get("/fail");
                         break;
                     case "POST":
                         postExercises.SimplePost();
