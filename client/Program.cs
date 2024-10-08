@@ -1,11 +1,12 @@
-﻿
-using client.Exercises;
+﻿using client.Exercises;
 
 namespace client;
 
 internal class Program
 {
-    private static readonly HttpClient Client = new ();
+    private static readonly string _baseUrl = "https://localhost:7141";
+    private static readonly HttpClient Client = new(){BaseAddress = new Uri(_baseUrl)};
+
     public static void Main(string[] args)
     {
         var getExercises = new GetExercises(Client);
@@ -15,28 +16,34 @@ internal class Program
 
         while (true)
         {
-            Console.WriteLine("What to do?");
-            var input = Console.ReadLine();
-            ArgumentNullException.ThrowIfNull(input);
-
-            switch (input.ToUpper())
+            try
             {
-                case "GET":
-                    getExercises.SimpleGet();
-                    break;
-                case "POST":
-                    postExercises.SimplePost();
-                    break;
-                case "PUT":
-                    putExercises.SimplePut();
-                    break;
-                case "DELETE":
-                    deleteExercises.SimpleDelete();
-                    break;
-                default:
-                    throw new NotImplementedException("This action is not implemented");
+                Console.WriteLine("What to do?");
+                var input = Console.ReadLine();
+                ArgumentNullException.ThrowIfNull(input);
+
+                switch (input.ToUpper())
+                {
+                    case "GET":
+                        getExercises.SimpleGet();
+                        break;
+                    case "POST":
+                        postExercises.SimplePost();
+                        break;
+                    case "PUT":
+                        putExercises.SimplePut();
+                        break;
+                    case "DELETE":
+                        deleteExercises.SimpleDelete();
+                        break;
+                    default:
+                        throw new NotImplementedException("This action is not implemented");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
-
     }
 }
