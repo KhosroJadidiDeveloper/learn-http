@@ -36,6 +36,9 @@ internal class Program
                     case "DELETE":
                         deleteExercises.SimpleDelete();
                         break;
+                    case "EXIT":
+                        Console.WriteLine("Goodbye!");
+                        return;
                     default:
                         throw new NotImplementedException("This action is not implemented");
                 }
