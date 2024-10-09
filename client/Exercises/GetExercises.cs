@@ -1,5 +1,6 @@
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using client.Utilities;
 
@@ -21,9 +22,12 @@ internal sealed class GetExercises(HttpClient client)
         {
             responseMessage.EnsureSuccessStatusCode();
             var content = await responseMessage.Content.ReadAsStringAsync();
+            var jsonNode = JsonNode.Parse(content);
             var jsonElement = JsonSerializer.Deserialize<JsonElement>(content);
             var prettyJson = JsonSerializer.Serialize(jsonElement, _jsonSerializerOptions);
             Print.Success(prettyJson);
+            Print.Success($"ID: {jsonNode?.Root["id"]!}");
+            Print.Success($"Age: {jsonNode?.Root["age"]!}");
             Print.Success($"Status code: {(int)responseMessage.StatusCode}");
         }
         catch (HttpRequestException e)
