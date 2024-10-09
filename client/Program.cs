@@ -24,6 +24,7 @@ internal class Program
 
                 switch (input.ToUpper())
                 {
+                    #region GET
                     case "GET":
                         await getExercises.Get(string.Empty);
                         break;
@@ -36,6 +37,7 @@ internal class Program
                     case "GET-F":
                         await getExercises.Get("/fail");
                         break;
+                    #endregion
                     case "POST":
                         postExercises.SimplePost();
                         break;
