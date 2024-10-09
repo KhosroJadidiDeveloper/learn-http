@@ -4,7 +4,7 @@ namespace client;
 
 internal class Program
 {
-    private static readonly string BaseUrl = "https://localhost:7141";
+    private const string BaseUrl = "https://localhost:7141";
     private static readonly HttpClient Client = new(){BaseAddress = new Uri(BaseUrl)};
 
     public static async Task Main(string[] args)
@@ -31,7 +31,7 @@ internal class Program
                         await getExercises.Get("/success");
                         break;
                     case "GET-S-P":
-                        await getExercises.Get("success/khosro?age=30");
+                        await getExercises.Get("success?id=khosro&age=30");
                         break;
                     case "GET-F":
                         await getExercises.Get("/fail");
