@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using server.Endpoints;
 
@@ -14,6 +13,15 @@ app.UseSwaggerUI();
 
 Endpoints.MapGetEndpoints(app);
 
+app.MapPost("/success", (ILogger<Program> logger, [FromBody] string body) =>
+{
+    logger.LogInformation("success POST was called");
+    return Results.Created("Created successfully.",new
+    {
+        Message = "Got the body",
+        Body = body
+    });
+});
 
 
 app.Run();

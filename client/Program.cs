@@ -38,8 +38,8 @@ internal class Program
                         await getExercises.Get("/fail");
                         break;
                     #endregion
-                    case "POST":
-                        postExercises.SimplePost();
+                    case "P":
+                        await postExercises.SimplePost();
                         break;
                     case "PUT":
                         putExercises.SimplePut();
