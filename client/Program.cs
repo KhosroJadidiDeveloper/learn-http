@@ -13,6 +13,7 @@ internal class Program
         var postExercises = new PostExercises(Client);
         var putExercises = new PutExercises(Client);
         var deleteExercises = new DeleteExercises(Client);
+        var patchExercises = new PatchExercises(Client);
 
         while (true)
         {
@@ -30,13 +31,16 @@ internal class Program
                         break;
                     #endregion
                     case "PO":
-                        await postExercises.SimplePost();
+                        await postExercises.Post();
                         break;
-                    case "PUT":
-                        putExercises.SimplePut();
+                    case "PU":
+                        await putExercises.Put();
+                        break;
+                    case "PA":
+                        await patchExercises.Patch();
                         break;
                     case "DELETE":
-                        deleteExercises.SimpleDelete();
+                        await deleteExercises.Delete();
                         break;
                     case "EXIT":
                         Console.WriteLine("Goodbye!");

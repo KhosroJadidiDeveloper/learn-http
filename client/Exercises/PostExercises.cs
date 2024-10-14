@@ -11,7 +11,7 @@ internal sealed class PostExercises(HttpClient client)
 {
     private readonly HttpClient _client = client;
 
-    public async Task SimplePost()
+    public async Task Post()
     {
         try
         {

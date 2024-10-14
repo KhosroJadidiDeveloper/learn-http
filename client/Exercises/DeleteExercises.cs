@@ -1,16 +1,12 @@
 namespace client.Exercises;
 
-internal sealed class DeleteExercises
+internal sealed class DeleteExercises(HttpClient client)
 {
-    private readonly HttpClient _client;
+    private readonly HttpClient _client = client;
 
-    public DeleteExercises(HttpClient client)
-    {
-        _client = client;
-    }
 
-    public void SimpleDelete()
+    public async Task Delete()
     {
-        throw new NotImplementedException();
+
     }
 }

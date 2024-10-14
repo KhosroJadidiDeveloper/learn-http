@@ -1,16 +1,11 @@
 namespace client.Exercises;
 
-internal sealed class PutExercises
+internal sealed class PutExercises(HttpClient client)
 {
-    private readonly HttpClient _client;
+    private readonly HttpClient _client = client;
 
-    public PutExercises(HttpClient client)
+    public async Task Put()
     {
-        _client = client;
-    }
 
-    public void SimplePut()
-    {
-        throw new NotImplementedException();
     }
 }
