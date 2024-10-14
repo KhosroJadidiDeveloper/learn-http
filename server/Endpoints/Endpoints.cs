@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using server.Entities;
+using server.Models;
 using server.Persistence;
 
 namespace server.Endpoints;
@@ -22,7 +23,7 @@ internal static class Endpoints
 
     internal static void MapPostEndpoints(WebApplication app)
     {
-        app.MapPost("/", (ILogger<Program> logger, [FromServices] UsersDb usersDb, [FromBody] User user) =>
+        app.MapPost("/", (ILogger<Program> logger, [FromServices] UsersDb usersDb, [FromBody] UserDto user) =>
         {
             logger.LogInformation("post called with: {User}",user);
             return Results.Created("Created successfully.", new
