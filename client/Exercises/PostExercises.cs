@@ -24,7 +24,7 @@ internal sealed class PostExercises(HttpClient client)
             };
             var stringContent = new StringContent(JsonSerializer.Serialize(postContect), Encoding.UTF8,
                 MediaTypeNames.Application.Json);
-            var postResponse = await _client.PostAsync("/success", stringContent);
+            var postResponse = await _client.PostAsync("/", stringContent);
             postResponse.EnsureSuccessStatusCode();
             var postContent = await postResponse.Content.ReadAsStringAsync();
             Print.Success(postContent);
