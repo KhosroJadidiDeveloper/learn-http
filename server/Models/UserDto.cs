@@ -1,8 +1,8 @@
-namespace server.Entities;
+﻿namespace server.Models;
 
-internal class User
+internal sealed class UserDto
 {
-    internal required int? Id { get; set; }
+    internal int? Id { get; set; }
     internal required string Name { get; set; }
     internal required int Age { get; set; }
 }
