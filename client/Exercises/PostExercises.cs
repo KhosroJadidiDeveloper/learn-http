@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
+using client.Dto;
 using client.Utilities;
 
 namespace client.Exercises;
@@ -15,7 +16,13 @@ internal sealed class PostExercises(HttpClient client)
     {
         try
         {
-            var stringContent = new StringContent(JsonSerializer.Serialize("post request body"), Encoding.UTF8,
+            var postContect = new UserDto
+            {
+                Id = null,
+                Age = 35,
+                Name = "Dude"
+            };
+            var stringContent = new StringContent(JsonSerializer.Serialize(postContect), Encoding.UTF8,
                 MediaTypeNames.Application.Json);
             var postResponse = await _client.PostAsync("/success", stringContent);
             postResponse.EnsureSuccessStatusCode();
