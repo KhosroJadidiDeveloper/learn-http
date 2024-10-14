@@ -16,7 +16,9 @@ internal sealed class GetExercises(HttpClient client)
         try
         {
             Print.Info($"Making a GET request to {_client.BaseAddress}{path}");
+            _client.DefaultRequestHeaders.Add("khosro","is a cool kid");
             var responseMessage = await _client.GetAsync(path);
+            _client.DefaultRequestHeaders.Remove("Khosro");
             responseMessage.EnsureSuccessStatusCode();
             var content = await responseMessage.Content.ReadAsStringAsync();
             var jsonNode = JsonNode.Parse(content);

@@ -25,20 +25,11 @@ internal class Program
                 switch (input.ToUpper())
                 {
                     #region GET
-                    case "GET":
+                    case "G":
                         await getExercises.Get(string.Empty);
                         break;
-                    case "GET-S":
-                        await getExercises.Get("/success");
-                        break;
-                    case "GET-S-P":
-                        await getExercises.Get("success?id=khosro&age=30");
-                        break;
-                    case "GET-F":
-                        await getExercises.Get("/fail");
-                        break;
                     #endregion
-                    case "P":
+                    case "PO":
                         await postExercises.SimplePost();
                         break;
                     case "PUT":
